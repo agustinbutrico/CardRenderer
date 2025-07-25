@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardRenderer", "CardRenderer\CardRenderer.csproj", "{9F4B7914-27CD-45AD-96A8-AB90CBFDB3AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardsShared", "CardsShared\CardsShared.csproj", "{872EC7EF-90F0-C423-98AA-F64FBEAA7355}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F4B7914-27CD-45AD-96A8-AB90CBFDB3AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F4B7914-27CD-45AD-96A8-AB90CBFDB3AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F4B7914-27CD-45AD-96A8-AB90CBFDB3AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F4B7914-27CD-45AD-96A8-AB90CBFDB3AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{872EC7EF-90F0-C423-98AA-F64FBEAA7355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{872EC7EF-90F0-C423-98AA-F64FBEAA7355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{872EC7EF-90F0-C423-98AA-F64FBEAA7355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{872EC7EF-90F0-C423-98AA-F64FBEAA7355}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3BA4582-F0B7-4F70-B6D8-948312F1AC84}
+	EndGlobalSection
+EndGlobal
