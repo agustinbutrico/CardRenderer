@@ -1,36 +1,73 @@
-# TexturesLib.UI for Rogue Tower
+# CardRenderer for Rogue Tower
 
-TexturesLib.UI is a mod designed to provide UI-related textures that can be easily referenced by other Rogue Tower mods. It serves as a centralized library of UI sprite textures, ensuring consistency and simplifying UI customization or extension for mod developers.
+## CardRenderer is a mod that enables dynamic display and rendering of cards in Rogue Tower.
+It provides tools to create, customize, and arrange cards into menus or tree structures, with automatic resizing of panels to fit the layout.
 
 ## Installation
 
-    Download the TexturesLib.UI DLL.
+    Download the CardRenderer DLL.
 
     Place the .dll file into your BepInEx/plugins folder.
 
     Launch the game.
 
-Note: This is a library mod. It doesn't add UI changes on its own, but rather supplies textures that other mods can use.
+Note: This is a library mod intended for use by other mods to render cards, menus, and upgrade trees.
 
 ## Features
 
-    UI Sprite Library
-    Adds referenceable UI sprite textures that can be accessed in any game scene.
+    Card Rendering
+    Dynamically create and display upgrade cards in-game.
 
-    Modder-Friendly
-    Designed for use by UI-based mods, making it easier to build or extend game menus, panels, or HUD elements.
+    Tree Structures
+    Display cards in hierarchical tree layouts (horizontal or vertical).
 
-    Consistent Visuals
-    Provides shared resources to ensure a uniform UI style across multiple mods.
+    Panel Resizing
+    Automatically resize panels to fit the number and arrangement of cards.
 
-## Usage
+    Customizable UI
+    Adjust card colors, slice variants, and text colors with ease.
 
-Mod developers can access UI sprites by using TexturesLib.Shared.SpriteHelper.FindSpriteByName.
-Example (C#):
+## API Reference
 
-using TexturesLib.Shared;
-using UnityEngine;
+The mod exposes a public API through CardRendererAPI:
 
-Sprite myUISprite = SpriteHelper.FindSpriteByName("UI9SliceBrown");
+### Menus & Panels
 
-This will search all loaded resources for the sprite with the given name (or the name + _TexturesLib) and cache it for future calls.
+// Create a new menu
+GameObject newMenu = CardRendererAPI.NewMenu("ParentPath", "NewMenuName", "PrefabAspectName");
+
+// Create a new panel inside a menu
+GameObject newPanel = CardRendererAPI.NewPanel(
+    "ParentPath", "PanelName", new Vector2(0, 0), false, "LargeUI9SliceBlue"
+);
+
+### Cards
+
+// Create a single card display
+GameObject card = CardRendererAPI.CreateCardDisplay(
+    cardDisplayData, "ParentPath", "SliceVariant", "PrefabAspect", Color.white, Color.black
+);
+
+// Adjust position of an existing card
+CardRendererAPI.ConfigureCardPosition(card, localPosition: new Vector3(0, 0, 0));
+
+// Change card slice or color
+CardRendererAPI.SwapCardSlice("Parent/CardPath", "SliceVariant", Color.blue, Color.white);
+
+### Card Trees
+
+// Display a horizontal card tree
+CardRendererAPI.DisplayCardTree(cardTreeRoots, "ParentPath");
+// Resize a panel to fit all its children
+CardRendererAPI.ResizeToFitChildren(createdPanel);
+
+// Display a vertical card tree
+CardRendererAPI.DisplayCardTreeVertical(cardTreeRoots, "ParentPath");
+// Resize a panel to fit all its children
+CardRendererAPI.ResizeToFitChildrenVertical(createdVerticalPanel);
+
+### Utility
+
+// Wait for card/menu aspects to be loaded
+yield return CardRendererAPI.WaitForCardAspect("DefaultHorizontalCard");
+yield return CardRendererAPI.WaitForMenuAspect("DefaultMenu");
